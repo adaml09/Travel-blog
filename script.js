@@ -40,9 +40,9 @@ $(document).ready(function () {
         { alt: "Hiking Trail", src: "./images/mountain3.jpg" },
       ],
       cities: [
-        { alt: "Montreal", src: "\images\city1.jpg" },
-        { alt: "Boston", src: "\images\city2.jpg" },
-        { alt: "Calgary", src: "\images\city3.jpg" },
+        { alt: "Montreal", src: "city1.jpg" },
+        { alt: "Boston", src: "city2.jpg" },
+        { alt: "Calgary", src: "city3.jpg" },
       ],
       forests: [
         { alt: "Forest Sunset", src: "./images/forest1.jpg" },
@@ -63,21 +63,23 @@ $(document).ready(function () {
       // [].forEach(), [].map() -> 2 Array Iterator Method
       let carouselContent = images
         .map((image, index) => {
-          return `<div class="carousel-item ${index == 0 ? "active" : ""}">
-        <div class="image" style="background-image: url('${image.src}')">
-        </div>
-        <p>${image.alt}</p>
-        </div>
-        `;
+          return `
+          <div class="carousel-item ${index == 0 ? "active" : ""}">
+            <div class="image" style="background-image: url('${image.src}')">
+            </div>
+            <p>${image.alt}</p>
+          </div>
+          `;
         })
         .join("");
   
       $(`#${category}-carousel`).html(carouselContent);
-  
+        
       $(`#${category}-carousel`).append(`
       <button class="carousel-control prev" onclick="moveCarousel('${category}', -1)">&lt;</button>
       <button class="carousel-control next" onclick="moveCarousel('${category}', 1)">&gt;</button>
       `);
+      
     }
   
     window.moveCarousel = function (category, direction) {
